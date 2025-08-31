@@ -1,0 +1,82 @@
+# study
+
+### master class
+- ref: https://www.youtube.com/watch?v=Ek_I0iFyyZU
+- 책: 나만의 mcp 서버 만들기 with 커서 AI
+- claude code with mcp server
+  - local scope
+  - project scope
+  - user scope
+    - `claude mcp add my-private-server --scope {local, project, user} /path/to/server`
+- `claude mcp list`
+- `claude config`, `/config`
+  - claude code 설정 확인 및 수정
+  - Use todo list: claude code에서 할 일 목록 사용
+    - 큰 규모의 작업일때 유용
+    - 작은 태스크로 나눠서 진행해주기 때문
+  - Output style
+    - Default
+    - Explanatory
+    - Learning
+    - `/output-style:new`
+- claude code mode
+  - accept edits on
+    - 실제 코드 수정
+  - plan mode on
+    - 계획 모드
+  - bypass permission on (`claude --dangerously-skip-permissions`)
+    - 권한 무시
+    - 주의: development containers에서만 사용하는 걸 추천
+      - https://docs.anthropic.com/en/docs/claude-code/devcontainer
+      - https://github.com/anthropics/claude-code/tree/main/.devcontainer
+      - extension:dev containers
+- Subagent
+  - `agents`
+  - 병렬처리 가능
+- Hooks
+  - 특정 이벤트에 자동으로 실행되는 셀 명령어를 등록해 클로드 코드의 동작을 제어하는 기능
+  - `settings.json`의 `hooks`에 등록
+  - hook events
+  - debugging, 파일 생성시 git add .
+    - [ ] 계속해서 transpile을 실행해서 에러 발생시 알려주는 것도 괜찮을 듯
+      - git add . 혹은 staged 바뀌면 transpile 실행(`npm run vue-tsc --noEmit`, `npm run lint:fix`, `npm run test:unit`)
+      - transpile 에러 발생시 개발자에게 알려주기
+- `/clear`
+  - 하나의 채팅(context)에 너무 오래 길게 작성하면 모델 성능이 안 좋아짐
+- `/resume`
+  - 기존 대화 내역
+  - `/clear` 후 `/resume`으로 이어갈 수 있음
+- `/export`로 현재의 채팅(context)을 파일 혹은 클립보드로 내보낼 수 있음
+- 커스텀 커맨드
+- `!`
+  - claude code 내에서 커맨드 실행
+  - 실행 코드와 결과 역시 채팅에 남기에 수정 및 테스트가 쉽음
+- `.claude/settings.json`
+  - `permissions`
+    - `allow`, `deny`
+- useful tools
+  - `npx ccusage`
+    - https://github.com/ryoppippi/ccusage
+    - claude code 사용량 확인
+  - super claude
+    - https://github.com/SuperClaude-Org/SuperClaude_Framework
+    - 유용한 커맨드 제공
+    - 페르소나 제공
+      - architect, frontend, backend, analyzer...
+    - `sc:*`
+  - claude code templates
+    - https://www.aitmpl.com/
+    - 필요한 커맨드, 훅 import 가능
+
+
+
+### context7
+- context7 ref: https://www.youtube.com/watch?v=TrXBzzsUUY4
+- 할루시네이션 해결
+- context7을 사용해 새로운 mcp 서버를 구현
+  - mcp 서버로도 할 수 있고
+  - claude code의 커맨드
+  - 일반 애플리케이션
+  - [ ] インシデントをdev02, qa02で再現してみる
+    - input: フォーマットされているインシデントissue
+    - output: dev02, qa02で再現した結果(dev_setup_tool2を使うかも)
