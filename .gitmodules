@@ -1,0 +1,9 @@
+[submodule "slack-bot-sample/slack-bot-sample/clientv"]
+	path = slack-bot-sample/slack-bot-sample/clientv
+	url = https://github.com/ssu-capstone-bookstar/clientv
+[submodule "slack-bot-sample/server"]
+	path = slack-bot-sample/server
+	url = https://github.com/ssu-capstone-bookstar/server
+[submodule "slack-bot-sample/clientv"]
+	path = slack-bot-sample/clientv
+	url = https://github.com/ssu-capstone-bookstar/clientv
